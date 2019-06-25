@@ -7,12 +7,12 @@
 
 # § 0. Table of Contents
 
-  1. Scope of this document and repo
-  2. Docker build
-  2.1 Prerequisites
-  2.2 Description of scripts architecture
-  2.3 Perform the container build
-  2.4 Use the built image
+  1. Scope of this document and repo  
+  2. Docker build  
+  2.1 Prerequisites  
+  2.2 Description of scripts architecture  
+  2.3 Perform the container build  
+  2.4 Use the built image  
 
 # § 1. Scope of this document and repo
 
