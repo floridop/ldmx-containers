@@ -53,7 +53,11 @@ the builds as described in
 
 With modifications required to live inside a container.
 
-The main script buildimage.sh creates the images in order.
+The prepareImage.sh script at the moment only downloads the latest version of cmake. 
+It can be used for further out-of-image customizations, so that one doesn't have to download/rebuild
+additional software that requires no compilation at every image rebuild.
+
+The main script `buildimage.sh` creates the images in order.
 
 All the installed software can be found inside the container in the ldmx folder.
 The rest of libraries are placed in system folders depending on the distribution
@@ -65,6 +69,7 @@ Run
 
 ```shell
  cd docker
+ ./prepareImage.sh
  ./buildimage.sh
 ```
 
