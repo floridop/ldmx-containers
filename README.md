@@ -1,9 +1,9 @@
-##############################################################
+---------------------------------------------------------------
 # ldmx-containers
-# Proof of concept for LDMX build environment using containers.
-##############################################################
-# Author: Florido Paganelli florido.paganelli@hep.lu.se
-#############################################################
+---------------------------------------------------------------
+#### Proof of concept for LDMX build environment using containers.
+#### Author: Florido Paganelli florido.paganelli@hep.lu.se
+---------------------------------------------------------------
 
 # § 0. Table of Contents
 
@@ -27,6 +27,7 @@ This code will create a docker image for running LDMX software inside docker con
 ## § 2.1 Prerequisites
 
 Install docker according to:
+
   <https://docs.docker.com/install/>
 
 ## § 2.2 Description of scripts architecture
@@ -47,7 +48,9 @@ The build steps must be done in ascendent order 0-4.
 
 The bash scripts are passed to the docker containers and they simply perform 
 the builds as described in 
+
    <https://github.com/LDMX-Software/ldmx-sw/blob/master/README.md> 
+
 With modifications required to live inside a container.
 
 The main script buildimage.sh creates the images in order.
