@@ -17,7 +17,7 @@
 # § 1. Scope of this document and repo
 
 This is preliminary work to implement cluster-lever Singularity support for the software.
-The byproduct will be a workind docker environment where users can test
+The byproduct will be a working docker environment where users can test
 the ldmx-sw on any machine with a similar environment as in a cluster.
 
 # § 2. Docker build
@@ -42,7 +42,7 @@ The notation used is as follows
    Dockerfile<integer>.<softwarename>
 ```
 
-Where <integer> is the build step and <softwarename> is the compiled software.
+Where `<integer>` is the build step and `<softwarename>` is the compiled software.
 
 The build steps must be done in ascendent order 0-4.
 
