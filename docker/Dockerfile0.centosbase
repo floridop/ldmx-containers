@@ -6,6 +6,8 @@ RUN yum -y upgrade
 
 RUN yum -y group install "Development Tools" 
 
+RUN yum -y install python-devel numpy boost-devel
+
 # Set the working directory to /app
 WORKDIR /ldmx
 
