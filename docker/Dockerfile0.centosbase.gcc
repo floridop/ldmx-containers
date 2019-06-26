@@ -1,0 +1,46 @@
+# basic machine to build ldmx sw
+FROM ldmx:centosbase
+#FROM python:2.7-slim
+
+RUN yum -y upgrade 
+
+RUN yum -y install centos-release-scl
+
+RUN yum -y install devtoolset-6-gcc*
+
+#RUN echo "scl enable devtoolset-6 bash" >> /etc/profile
+
+# Set the working directory to /app
+WORKDIR /ldmx
+
+# enable gcc6 as default
+
+ENV INFOPATH "/opt/rh/devtoolset-6/root/usr/share/info"
+ENV LD_LIBRARY_PATH "/opt/rh/devtoolset-6/root/usr/lib64:/opt/rh/devtoolset-6/root/usr/lib"
+ENV MANPATH "/opt/rh/devtoolset-6/root/usr/share/man:"
+ENV PATH "/opt/rh/devtoolset-6/root/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ENV PCP_DIR "/opt/rh/devtoolset-6/root"
+ENV PERL5LIB "/opt/rh/devtoolset-6/root//usr/lib64/perl5/vendor_perl:/opt/rh/devtoolset-6/root/usr/lib/perl5:/opt/rh/devtoolset-6/root//usr/share/perl5/vendor_perl"
+ENV PYTHONPATH "/opt/rh/devtoolset-6/root/usr/lib64/python2.7/site-packages:/opt/rh/devtoolset-6/root/usr/lib/python2.7/site-packages"
+ENV X_SCLS "devtoolset-6 "
+
+
+# install cmake
+
+#COPY ./tmp/cmakedirs /usr
+
+#RUN ./installXerces.sh
+
+# Install any needed packages specified in requirements.txt
+#RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+
+# Make port 80 available to the world outside this container
+#EXPOSE 80
+
+# Define environment variable
+#ENV NAME World
+
+# Run app.py when the container launches
+#CMD ["python", "app.py"]
+
