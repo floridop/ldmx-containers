@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM ldmx:centosbase
+FROM ldmx:centosbase.gcc
 #FROM python:2.7-slim
 
 # Set the working directory to /app
