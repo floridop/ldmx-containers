@@ -1,0 +1,15 @@
+# Use ldmx image containing xerces libs
+FROM ldmx:0.1
+
+# Dependecies
+RUN yum install -y libXpm-devel libXft-devel libXext-devel mesa-libGL-devel mesa-libGLU-devel
+
+# Set the working directory to /ldmx
+WORKDIR /ldmx
+
+# Copy the current directory contents into the container at /app
+COPY ./buildROOT.sh /ldmx
+
+RUN ./buildROOT.sh
+
+ENV ROOTDIR /ldmx/libs/root-6.06.08-build

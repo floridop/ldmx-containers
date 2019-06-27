@@ -1,0 +1,16 @@
+# Use an ldxm image with root 
+FROM ldmx:0.2
+
+# Dependecies
+RUN yum install -y libX11-devel libXmu-devel mesa-libGL-devel
+
+# Set the working directory to /ldmx
+WORKDIR /ldmx
+
+# Copy the current directory contents into the container at /app
+COPY ./buildGeant4.sh /ldmx
+
+RUN ./buildGeant4.sh
+
+ENV G4DIR /ldmx/libs/geant4/
+
