@@ -3,6 +3,7 @@
 ---------------------------------------------------------------
 #### Proof of concept for LDMX build environment using containers.
 #### Author: Florido Paganelli florido.paganelli@hep.lu.se
+#### Last edit: 2019-06-27
 ---------------------------------------------------------------
 
 # § 0. Table of Contents
@@ -44,7 +45,7 @@ The notation used is as follows
 
 Where `<integer>` is the build step and `<softwarename>` is the compiled software.
 
-The build steps must be done in ascendent order 0-4.
+The build steps must be done in ascendent order 0-5.
 
 The bash scripts are passed to the docker containers and they simply perform 
 the builds as described in 
@@ -53,15 +54,34 @@ the builds as described in
 
 With modifications required to live inside a container.
 
+The current order is as follows:
+
+0. Build a basic CentOS7 image with the minimum requirements for LDMX 
+1. Add Xerces to the image
+2. Add ROOT to the image
+3. Add Geant4 to the image, compiled with LDMX specifics
+4. Compile LDMX-SW
+5. Create the work-environment container for testing the software and run jobs
+
 The prepareImage.sh script at the moment only downloads the latest version of cmake. 
 It can be used for further out-of-image customizations, so that one doesn't have to download/rebuild
 additional software that requires no compilation at every image rebuild.
 
-The main script `buildimage.sh` creates the images in order.
+The main script `buildimage.sh` downloads and 
+prepares pre-compiled software creates the images in order.
 
 All the installed software can be found inside the container in the ldmx folder.
 The rest of libraries are placed in system folders depending on the distribution
 used. Currently it is CentOS7.
+
+The custom directory structure of the container for ldmx is as such:
+
+/ldmx                 # main ldmx folder, currently contains also bash scripts
+  /build              # folder where sources are copied and software is built
+     /<softwarename>  # sources for specific software
+     / ...
+  /libs               # folder with built software
+     /<softwarename>  # binaries for specific software
 
 ## § 2.3 Perform the container build
 
@@ -69,10 +89,17 @@ Run
 
 ```shell
  cd docker
- ./prepareImage.sh
  ./buildimage.sh
 ```
 
-## § 2.4 Use the built image
+## § 2.4 Use the built image(s)
 
-WIP
+You can test the final built docker image ldmx:user by running
+
+```shell
+   docker run -it ldmx:user
+```
+
+It will open a shell inside the container where the ldmx environment 
+is already fully initialized. 
+
