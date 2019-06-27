@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mdir -p /ldmx/build
+mkdir -p /ldmx/build
 cd /ldmx/build
 git clone https://github.com/LDMXAnalysis/ldmx-sw.git
 cd ldmx-sw
