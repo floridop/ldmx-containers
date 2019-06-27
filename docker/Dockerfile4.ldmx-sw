@@ -1,6 +1,11 @@
 # Use an ldmx image that contains geant4
 FROM ldmx:0.3
 
+# Build dependencies
+
+# which is used to find the current python executable path.
+RUN yum -y install vim which 
+
 # Set the working directory to /ldmx
 WORKDIR /ldmx
 
@@ -8,3 +13,4 @@ WORKDIR /ldmx
 COPY ./buildLDMX.sh /ldmx
 
 RUN ./buildLDMX.sh
+
