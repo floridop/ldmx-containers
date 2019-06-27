@@ -1,0 +1,16 @@
+# Use an ldmx image that contains geant4
+FROM ldmx:0.4
+
+# Build dependencies
+
+# which is used to find the current python executable path.
+RUN yum -y install vim  
+
+# Set the working directory to /ldmx
+WORKDIR /ldmx
+
+COPY ./setupTestData.sh /ldmx
+
+RUN echo "source /ldmx/libs/ldmx-sw-install/bin/ldmx-setup-env.sh" >> /root/.bash_profile 
+
+CMD bash -l
