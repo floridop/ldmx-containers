@@ -1,0 +1,20 @@
+# Use an ldmx image that contains geant4
+FROM ldmx:0.4
+
+# Build dependencies
+
+# some useful software
+RUN yum -y install vim  
+
+# Set the working directory to /ldmx
+WORKDIR /ldmx
+
+COPY ./tests /ldmx/tests
+
+RUN bash -c 'source /ldmx/libs/ldmx-sw-install/bin/ldmx-setup-env.sh; /ldmx/tests/setupTestData.sh'
+
+RUN echo "source /ldmx/libs/ldmx-sw-install/bin/ldmx-setup-env.sh" >> /root/.bash_profile 
+
+CMD bash -l
+
+
