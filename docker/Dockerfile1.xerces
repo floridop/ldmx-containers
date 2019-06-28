@@ -1,5 +1,5 @@
 # Use an ldmx base container with a selected gcc version
-FROM ldmx:centosbase.gcc
+FROM ldmx:centosbase.python
 
 # Set the working directory to /ldmx
 WORKDIR /ldmx
