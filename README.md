@@ -76,12 +76,14 @@ used. Currently it is CentOS7.
 
 The custom directory structure of the container for ldmx is as such:
 
+```
 /ldmx                 # main ldmx folder, currently contains also bash scripts
   /build              # folder where sources are copied and software is built
      /<softwarename>  # sources for specific software
      / ...
   /libs               # folder with built software
      /<softwarename>  # binaries for specific software
+```
 
 ## § 2.3 Perform the container build
 
