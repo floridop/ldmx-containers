@@ -14,6 +14,7 @@
   2.2 Description of scripts architecture  
   2.3 Perform the container build  
   2.4 Use the built image  
+  Appendix A: TODO
 
 # § 1. Scope of this document and repo
 
@@ -57,6 +58,8 @@ With modifications required to live inside a container.
 The current order is as follows:
 
 0. Build a basic CentOS7 image with the minimum requirements for LDMX 
+0a. Add custom gcc version
+0b. Add custom python version and packages
 1. Add Xerces to the image
 2. Add ROOT to the image
 3. Add Geant4 to the image, compiled with LDMX specifics
@@ -82,6 +85,14 @@ The custom directory structure of the container for ldmx is as such:
      / ...
   /libs               # folder with built software
      /<softwarename>  # binaries for specific software
+     /...
+  /tests              # folders where basic tests suggested by Lene are ran.
+                      #   one can inspect the logs in this folder to understand
+                      #   if the image built correctly.
+
+In the tests folder there is a script setupTestData.sh that prepares the 
+test environment and runs the tests. Can be used to understand how to 
+perform further testing.
 
 ## § 2.3 Perform the container build
 
@@ -97,9 +108,17 @@ Run
 You can test the final built docker image ldmx:user by running
 
 ```shell
-   docker run -it ldmx:user
+   docker run -it ldmx:tests
 ```
 
 It will open a shell inside the container where the ldmx environment 
 is already fully initialized. 
 
+## § Appendix A : TODO
+
+- Container folders
+  - move all the script to some /containerscripts folder
+  
+- understand modularization better -- what changes the most?
+
+- Test conversion to singularity
