@@ -12,7 +12,7 @@
   2. Docker build  
   2.1 Prerequisites  
   2.2 Description of scripts architecture  
-  2.3 Directory structure of the container
+  2.3 Directory structure inside the container  
   2.4 Perform the container build  
   2.5 Use the built image  
   Appendix A: TODO
@@ -78,6 +78,8 @@ All the installed software can be found inside the container in the ldmx folder.
 The rest of libraries are placed in system folders depending on the distribution
 used. Currently it is CentOS7.
 
+## § 2.3 Directory structure inside the container
+
 The custom directory structure of the container for ldmx is as such:
 
 ```
@@ -97,7 +99,7 @@ In the tests folder there is a script setupTestData.sh that prepares the
 test environment and runs the tests. Can be used to understand how to 
 perform further testing.
 
-## § 2.3 Perform the container build
+## § 2.4 Perform the container build
 
 Run 
 
@@ -106,7 +108,7 @@ Run
  ./buildimage.sh
 ```
 
-## § 2.4 Use the built image(s)
+## § 2.5 Use the built image(s)
 
 You can test the final built docker image ldmx:user by running
 
