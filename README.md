@@ -12,8 +12,9 @@
   2. Docker build  
   2.1 Prerequisites  
   2.2 Description of scripts architecture  
-  2.3 Perform the container build  
-  2.4 Use the built image  
+  2.3 Directory structure of the container
+  2.4 Perform the container build  
+  2.5 Use the built image  
   Appendix A: TODO
 
 # § 1. Scope of this document and repo
@@ -79,6 +80,7 @@ used. Currently it is CentOS7.
 
 The custom directory structure of the container for ldmx is as such:
 
+```
 /ldmx                 # main ldmx folder, currently contains also bash scripts
   /build              # folder where sources are copied and software is built
      /<softwarename>  # sources for specific software
@@ -89,6 +91,7 @@ The custom directory structure of the container for ldmx is as such:
   /tests              # folders where basic tests suggested by Lene are ran.
                       #   one can inspect the logs in this folder to understand
                       #   if the image built correctly.
+```
 
 In the tests folder there is a script setupTestData.sh that prepares the 
 test environment and runs the tests. Can be used to understand how to 
@@ -121,4 +124,9 @@ is already fully initialized.
   
 - understand modularization better -- what changes the most?
 
-- Test conversion to singularity
+- minimize size of the Docker image(s)
+
+- create a dev image to develop ldmx sw
+
+- Document conversion to singularity
+  - include aurora scripts
