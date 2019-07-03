@@ -1,0 +1,19 @@
+# Use an ldmx image that contains tests
+FROM ldmx:tests
+
+# some useful software
+#RUN yum -y install vim  
+
+# Set the working directory to /ldmx
+WORKDIR /ldmx
+
+# evaluate if these are needed
+#RUN echo "source /ldmx/libs/ldmx-sw-install/bin/ldmx-setup-env.sh" >> /etc/profile
+#RUN echo 'PS1=ldxmC-$PS1' >> /etc/profile
+
+# Add the tools folder
+
+COPY ./tools /ldmx/tools
+
+CMD bash -l
+

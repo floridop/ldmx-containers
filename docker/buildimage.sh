@@ -11,4 +11,5 @@ docker build -t ldmx:0.2 -f Dockerfile2.root .
 docker build -t ldmx:0.3 -f Dockerfile3.Geant4 .
 docker build -t ldmx:0.4 -f Dockerfile4.ldmx-sw .
 docker build -t ldmx:tests -f Dockerfile5.tests .
+docker build -t ldmx:dev -f Dockerfile6.usertools .
 
