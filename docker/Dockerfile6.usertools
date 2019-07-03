@@ -15,5 +15,5 @@ WORKDIR /ldmx
 
 COPY ./tools /ldmx/tools
 
-CMD bash -l
+#CMD bash -l
 
