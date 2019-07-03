@@ -119,10 +119,10 @@ Run
 
 ## § 2.5 Use the built image(s)
 
-You can test the final built docker image ldmx:user by running
+You can test the final built docker image ldmx:dev by running
 
 ```shell
-   docker run -it ldmx:tests
+   docker run -it ldmx:dev
 ```
 
 It will open a shell inside the container where the ldmx environment 
@@ -154,7 +154,7 @@ and I want to modify it with the LDMX container, I must mount it when starting
 the container, using the `-v` option:
 
 ```shell
-   docker run -v /home/pflorido/data:/home/pflorido/data -it ldmx:tests
+   docker run -v /home/pflorido/data:/home/pflorido/data -it ldmx:dev
 ```
 
 The syntax of the `-v` option is `<host folder>:<container folder>`
@@ -169,13 +169,13 @@ Examples:
 To mount your home folder inside the container:
 
 ```shell
-   docker run -v /my-home-folder-path:/my-home-folder-path -it ldmx:tests
+   docker run -v /my-home-folder-path:/my-home-folder-path -it ldmx:dev
 ```
 
 To mount your home folder inside the container, and a data folder from some storage:
 
 ```shell
-   docker run -v /my-home-folder-path:/my-home-folder-path -v /mydatastorage:/mydatastorage -it ldmx:tests
+   docker run -v /my-home-folder-path:/my-home-folder-path -v /mydatastorage:/mydatastorage -it ldmx:dev
 ```
 
 ## § 2.6 Develop against the container
@@ -204,7 +204,7 @@ as such:
 To develop interactively, start the container with the command:
 
 ```shell
-   docker run -v /home/username/ldmx:home/username/ldmx -it ldmx:tests
+   docker run -v /home/username/ldmx:home/username/ldmx -it ldmx:dev
 ```
 
 Once inside the container shell, simply cd into /home/username/ldmx

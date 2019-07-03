@@ -19,6 +19,9 @@ The byproduct will be a working docker environment where users can test
 the ldmx-sw on any machine with a similar environment as in a cluster.
 
 # §  2. Docker support
+   
+See documentation in the /docker folder.
 
 # §  3. Singularity support
 
+See documentation in the /singularity folder.
