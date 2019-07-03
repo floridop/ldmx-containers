@@ -40,5 +40,5 @@ fi
 
 
 echo "To initialize the the LDXM environment use"
-echo "    source $INSTALL_PATH/bin/ldmx-setup-env.sh
+echo "    source $INSTALL_PATH/bin/ldmx-setup-env.sh"
 echo
