@@ -130,13 +130,13 @@ If you want to use the ldmx- commands, you need to have this line in the script:
   source /ldmx/libs/ldmx-sw-install/bin/ldmx-setup-env.sh
 ```
 
->NOTE: The path `/ldmx/libs/ldmx-sw-install/bin/ldmx-setup-env.sh` ONLY EXISTS
+>:warning: **NOTE**: The path `/ldmx/libs/ldmx-sw-install/bin/ldmx-setup-env.sh` ONLY EXISTS
       INSIDE THE CONTAINER.
 
 
->NOTE:Tests have shown that the ldmx production environment interferes 
+>:warning: **NOTE**: Tests have shown that the ldmx production environment interferes 
       with the build environment. Therefore, the ldmx environment is 
-      NOT initialized automatically when running the container. 
+      NOT initialized automatically when running the container.  
       This is why one has to call the above script as the first part
       of any LDMX script.
 
@@ -212,7 +212,7 @@ To develop using the container one must override the container ldmx-sw-install l
 Have a copy of the code in your home folder or in some Aurora shared folder,
 start the container and redefine the install paths accordingly.
 
->  NOTE: before starting make sure you DID NOT SOURCE ANY `ldmx-setup-env.sh`. It 
+>:warning: **NOTE**: before starting make sure you DID NOT SOURCE ANY `ldmx-setup-env.sh`. It 
          is reported to screw up all the build folders in the container. Start with a clean
          environment. If you have env vars in your ~/.bashrc or ~/.bash_profile please remove
          or comment them out and relogin.
