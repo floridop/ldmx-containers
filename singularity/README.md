@@ -66,29 +66,27 @@ The content of the example scriptis assumes that
    say the path `/my/writable/folder`
 
 I suggest you open the scripts and files to understand how the process is done.
+```
+README.md : this document
 
-      README.md : this document
+ ldmx-img : A wrapper script that mounts site-specific folders
+            inside the ldmx-tests.simg image and executes a command
+            passed via command line. For example to start an interactive
+            session inside the ldmx container run:
 
-       ldmx-img : A wrapper script that mounts site-specific folders
-                  inside the ldmx-tests.simg image and executes a command
-                  passed via command line. For example to start an interactive
-                  session inside the ldmx container run:
-                  ```shell
-                     ldmx-img bash
-                  ```
+               ldmx-img bash
 
-                  To start some computing script `ldmx-tests.sh` run
-                  ```shell
-                     ldmx-img ldmx-tests.sh
-                  ```
+            To start some computing script `ldmx-tests.sh` run
 
-   examples/ folder:
+               ldmx-img ldmx-tests.sh
+
+examples/ folder:
  ldmx-tests.sh : An example of how to use the container environment
                    inside a script instead of interactively.
 
-   examples/SLURM folder:
+examples/SLURM folder:
   testbatch.sh : An example of how to use the container inside a SLURM script
-
+```
 I suggest to copy these files on a cluster and modify them according to 
 your needs, as explained in the next sections.
 
