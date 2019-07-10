@@ -154,9 +154,9 @@ has to understand:
    However, the singularity image is *readonly*, and so are *all the paths inside it*. If you want to write something,
    you must *mount* some writable cluster storage path *inside the container* when you call it.
    One uses singularity's `-B` option to mount local folders:
-```shell
-   singularity -B /my/cluster/folder -B /my/other/cluster/folder ldmx-tests.simg myproductiontask.sh
-```
+   ```shell
+      singularity -B /my/cluster/folder -B /my/other/cluster/folder ldmx-tests.simg myproductiontask.sh
+   ```
    in this way the production task script can write on the folders `/my/cluster/folder` and `/my/other/cluster/folder`
    when running inside the container environment.  
    The user home path is usually mounted by default by singularity, and it's writable, so there is no need
@@ -167,18 +167,13 @@ has to understand:
    you must *mount* some writable cluster path *inside the container* when you call it at step 2).  
    To do this, and make it easier for all users to use the same environment, the `ldmx-img` *wrapper script* is 
    used.  
-   The wrapper script uses singularity's `-B` option to mount local folders:
-```shell
-   singularity -B /my/cluster/folder -B /my/other/cluster/folder ldmx-tests.simg myproductiontask.sh
-```
-   in this way the production script can write on the folders `/my/cluster/folder` when running inside
-   the container environment.  
+   The wrapper script uses singularity's `-B` option to mount local folders as described in 2).
    The user should not bother about mounting these folders, an ldmx cluster expert should modify the
    `ldmx-img` script to mount the useful folders.  
    So the user that wants to run production jobs simply has to call:
-```shell
-   ldmx-img myproductiontask.sh
-```
+   ```shell
+      ldmx-img myproductiontask.sh
+   ```
  4) A **batch system job script** is a batch script that has some batch system directives and
    *calls* the ldmx wrapper AND a script.  
    Therefore a batch job script MUST contain the line at 3).  
