@@ -145,53 +145,53 @@ If you want to use the ldmx- commands, you need to have this line in the script:
 When running/preparing jobs to run on a singularity enabled cluster, there are few concepts one
 has to understand:
 
-1) The *production task script* is a script that uses the LDMX software. Let's call it `myproductiontask.sh`
+1) The **production task script** is a script that uses the LDMX software. Let's call it `myproductiontask.sh`
    This should contain things you use ldmx-sw for. It can contain paths both relative
-   to the container and the cluster.
-2) The *singularity image* is the environment where the script runs. For a script to 
+   to the container and the cluster.  
+2) The **singularity image** is the environment where the script runs. For a script to 
    run in a singularity image `ldxm-tests.simg` container envrironment one has to pass the script to the image:
    `ldxm-tests.simg myproductiontask.sh`
-   However, the singularity image is _readonly_, and so are _all the paths inside it_. If you want to write something,
+   However, the singularity image is *readonly*, and so are *all the paths inside it*. If you want to write something,
    you must *mount* some writable cluster storage path *inside the container* when you call it.
    One uses singularity's `-B` option to mount local folders:
 ```shell
    singularity -B /my/cluster/folder -B /my/other/cluster/folder ldmx-tests.simg myproductiontask.sh
 ```
    in this way the production task script can write on the folders `/my/cluster/folder` and `/my/other/cluster/folder`
-   when running inside the container environment.
+   when running inside the container environment.  
    The user home path is usually mounted by default by singularity, and it's writable, so there is no need
    to specify the -B option.
-3) The ldmx container *wrapper script* `ldmx-img` is used to simplify the mount task above, and potentially other
-   tedious tasks that should be done in production. 
+3) The ldmx container **wrapper script** `ldmx-img` is used to simplify the mount task above, and potentially other
+   tedious tasks that should be done in production.    
    The singularity image is readonly, and so are all the paths inside it. If you want to write something,
-   you must *mount* some writable cluster path *inside the container* when you call it at step 2).
+   you must *mount* some writable cluster path *inside the container* when you call it at step 2).  
    To do this, and make it easier for all users to use the same environment, the `ldmx-img` *wrapper script* is 
-   used.
+   used.  
    The wrapper script uses singularity's `-B` option to mount local folders:
 ```shell
    singularity -B /my/cluster/folder -B /my/other/cluster/folder ldmx-tests.simg myproductiontask.sh
 ```
    in this way the production script can write on the folders `/my/cluster/folder` when running inside
-   the container environment.
+   the container environment.  
    The user should not bother about mounting these folders, an ldmx cluster expert should modify the
-   `ldmx-img` script to mount the useful folders.
+   `ldmx-img` script to mount the useful folders.  
    So the user that wants to run production jobs simply has to call:
 ```shell
    ldmx-img myproductiontask.sh
 ```
- 4) A *batch system job script* is a batch script that has some batch system directives and
-   *calls* the ldmx wrapper AND a script. 
-   Therefore a batch job script MUST contain the line at 3).
+ 4) A **batch system job script** is a batch script that has some batch system directives and
+   *calls* the ldmx wrapper AND a script.  
+   Therefore a batch job script MUST contain the line at 3).  
    This batch script can ONLY CONTAIN PATHS IN THE CLUSTER. It has no knowledge of what happens
-   inside the container, or how the folders in the container are organized.
- 5) The graph below shows the only way to combine these three concepts properly.
-    Any other combination of the above concepts is wrong.
+   inside the container, or how the folders in the container are organized.  
+ 5) The graph below shows the only way to combine these three concepts properly.  
+    _Any other combination of the above concepts is wrong_.  
 ```
 <batch system command> mybatchscript.sh
                            |-> contains `ldmx-img myproductiontaskscript.sh`
                                             |-> contains `singularity -B /my/cluster/folder -B /my/other/cluster/folder ldmx-tests.simg <myproductionscript.sh as above>`
 ```
-6) Typically you call the batch job script with the tools the batch system provides.
+6) **Batch system run.** Typically you call the batch job script with the tools the batch system provides.  
    For example for SLURM
    ```shell
    sbatch mybatchscript.sh
@@ -200,9 +200,9 @@ has to understand:
 ### Quick set up of a production environment:
 1. Create a singularity image from a docker container as explained in § 2.
    Let's call it `ldmx-tests.simg`
-2. Copy the `ldmx-img` script distributed in this git repo to your cluster
-2.1. Modify the `ldmx-img` wrapper script to accomodate the folders you want to mount
-   on the cluster. Make sure all paths are correct and match your cluster.
+2. Copy the `ldmx-img` script distributed in this git repo to your cluster and 
+   it to accomodate the folders you want to mount on the cluster. 
+   Make sure all paths are correct and match your cluster's.
 4. Using the `examples/ldmx-tests.sh` file, create your production task script.
 5. Using the `examples/SLURM/testbatch.sh` file, create your own batch job script.
 6. Use the batch system commands to run the script. For example, for SLURM:
