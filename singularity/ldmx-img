@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Singularity wrapper for LDMX, mounts folders as in Aurora. Takes a job in input. 
+# if shell is passed, the user is in a developer environment to develop software.
+
+singularity exec -B /projects/hep/fs7:/projects/hep/fs7 -B $SNIC_TMP /projects/hep/fs7/shared/containers/ldmx-tests.simg $1
