@@ -160,7 +160,7 @@ has to understand:
    in this way the production task script can write on the folders `/my/cluster/folder` and `/my/other/cluster/folder`
    when running inside the container environment.  
    The user home path is usually mounted by default by singularity, and it's writable, so there is no need
-   to specify the -B option.
+   to specify the `-B` option for it.
 3) The ldmx container **wrapper script** `ldmx-img` is used to simplify the mount task above, and potentially other
    tedious tasks that should be done in production.    
    The singularity image is readonly, and so are all the paths inside it. If you want to write something,
